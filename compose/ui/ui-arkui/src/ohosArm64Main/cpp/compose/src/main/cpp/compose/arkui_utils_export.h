@@ -29,6 +29,36 @@ Boolean androidx_compose_ui_arkui_utils_xcomponent_prepareDraw(void *render);
 Boolean androidx_compose_ui_arkui_utils_xcomponent_finishDraw(void *render);
 void androidx_compose_ui_arkui_utils_xcomponent_registerFrameCallback(void *render);
 void androidx_compose_ui_arkui_utils_xcomponent_unregisterFrameCallback(void *render);
+
+// ============================================
+// CanIUse C API 接口（直接调用 HarmonyOS C API）
+// ============================================
+
+/**
+ * 检测系统能力（SysCap）是否可用
+ * 直接调用 HarmonyOS C API，绕过 ArkTS 层
+ * 
+ * @param capability 系统能力名称，如 "SystemCapability.ArkUI.ArkUI.Full"
+ * @return true 表示可用，false 表示不可用或调用失败
+ */
+Boolean androidx_compose_ui_arkui_caniuseext_checkCapability(const char* capability);
+
+/**
+ * 检测 API 是否可用
+ * 
+ * @param apiName API 名称，如 "window.Window.getLastWindow"
+ * @return true 表示可用，false 表示不可用或调用失败
+ */
+Boolean androidx_compose_ui_arkui_caniuseext_checkApi(const char* apiName);
+
+/**
+ * 检查 C API 是否可用
+ * 用于上层判断是否需要使用回退方案
+ * 
+ * @return true 表示 C API 可用，false 表示不可用
+ */
+Boolean androidx_compose_ui_arkui_caniuseext_isAvailable();
+
 EXTERN_C_END
 
 #endif

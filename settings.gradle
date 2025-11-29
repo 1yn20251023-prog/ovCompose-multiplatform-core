@@ -10,6 +10,9 @@ pluginManagement {
         maven {
             url = "https://mirrors.tencent.com/nexus/repository/maven-public"
         }
+        maven {
+            url = "https://kmp-ohos-test.obs.cn-south-1.myhuaweicloud.com/maven/"
+        }
     }
 }
 
